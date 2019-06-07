@@ -9,7 +9,7 @@
 <nav class="navbar navbar-inverse" style="border-radius: 0px;">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="#">Academy</a>
+      <a class="navbar-brand" href="{% url 'accueil' %}">Academy</a>
     </div>
     <ul class="nav navbar-nav">
       <li class="dropdown">
@@ -22,7 +22,7 @@
           <li><a href="#">Joueur</a></li>
           <li class="divider"></li>
           <li class="dropdown-header">Read</li>
-          <li><a href="#">Sports</a></li>
+          <li><a href="{% url 'sports' %}">Sports</a></li>
           <li><a href="#">Équipes</a></li>
           <li><a href="#">Joueurs</a></li>
         </ul>
@@ -36,7 +36,7 @@
           <li class="active">Home</li>
         </ul>
       {% endblock %}
-      <div class=" col-lg-12 col-md-12 col-sm-12">
+      <div class="col-lg-12 col-md-12 col-sm-12">
         <p class="lead">
           {% block page_header %}
             -

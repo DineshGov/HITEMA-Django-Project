@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %}Academy - Liste des sports{% endblock %}
+{% block page_header %}Formulaire de création de sport{% endblock %}
+
+{% block position %}
+<ul class="breadcrumb">
+  <li><a href="{% url 'accueil' %}">Home</a></li>
+  <li><a href="{% url 'sports' %}">Sports</a></li>
+  <li class="active">Création sport</li>
+</ul>
+{% endblock %}
+
+{% block content %}
+
+<form  action="{% url "create_sport" %}" method="post">
+    <div class="form-group">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Submit" />
+    </div>
+</form>
+
+{% endblock %}
