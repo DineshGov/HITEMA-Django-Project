@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block title %}Academy - MàJ sport {{ id_sport }}{% endblock %}
+{% block page_header %}Mise à jour du sport '{{ sport.nomSport }}'{% endblock %}
+
+{% block position %}
+<ul class="breadcrumb">
+  <li><a href="{% url 'accueil' %}">Home</a></li>
+  <li><a href="{% url 'sports' %}">Sports</a></li>
+  <li class="active">MàJ sport</li>
+</ul>
+{% endblock %}
+
+{% block content %}
+
+<div class="list-group col-lg-5 col-md-5 col-sm-5">
+{% if envoi %}
+<div class="alert alert-dismissible alert-success">
+  <button type="button" class="close" data-dismiss="alert">&times;</button>
+  Le nom du sport <strong>{{ sport.nomSport }}</strong> a été mis à jour!
+</div>
+{% endif %}
+
+<form  action="{% url "update_sport" id_sport=sport.id %}" method="post">
+    <div class="form-group">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Submit" />
+    </div>
+</form>
+</div>
+
+{% endblock %}

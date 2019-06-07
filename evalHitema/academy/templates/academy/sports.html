@@ -37,7 +37,7 @@
 
   {% for sport in sports %}
     <span>
-      <a href="#" class="list-group-item">
+      <a href="{% url 'update_sport' id_sport=sport.id %}" class="list-group-item">
         {{ sport.nomSport }}
       </a>
     <span>

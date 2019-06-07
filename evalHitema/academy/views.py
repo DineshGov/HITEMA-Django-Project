@@ -19,7 +19,14 @@ def create_sport(request):
     form = SportForm(request.POST or None)
     if form.is_valid(): 
         nomSport = form.cleaned_data['nomSport']
-        envoi = True
         form.save()
         return redirect('sports')
     return render(request, 'academy/createSport.html', locals())
+
+def update_sport(request, id_sport):
+    sport = get_object_or_404(Sport, id=id_sport)
+    form = SportForm(request.POST or None, instance=sport)
+    if form.is_valid():
+        form.save()
+        envoi = True
+    return render(request, "academy/updateSport.html", locals())
