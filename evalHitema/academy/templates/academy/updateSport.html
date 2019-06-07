@@ -20,7 +20,14 @@
 </div>
 {% endif %}
 
-<form  action="{% url "update_sport" id_sport=sport.id %}" method="post">
+{% if form.fieldname.errors %}
+<div class="alert alert-dismissible alert-success">
+  <button type="button" class="close" data-dismiss="alert">&times;</button>
+  {{ form.fieldname.errors.as_text }}
+</div>
+{% endif %}
+
+<form  action="{% url 'update_sport' id_sport=sport.id %}" method="post">
     <div class="form-group">
     {% csrf_token %}
     {{ form.as_p }}

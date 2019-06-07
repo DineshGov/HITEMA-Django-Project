@@ -17,6 +17,7 @@ def read_sports(request):
 
 def create_sport(request):
     form = SportForm(request.POST or None)
+
     if form.is_valid(): 
         nomSport = form.cleaned_data['nomSport']
         form.save()

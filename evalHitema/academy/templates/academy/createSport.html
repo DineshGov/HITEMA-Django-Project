@@ -12,6 +12,33 @@
 
 {% block content %}
 
+<style type="text/css">
+    ul.errorlist {display:none;}
+</style>
+
+<div class="list-group col-lg-5 col-md-5 col-sm-5">
+
+{% if form.non_field_errors %}
+    {% for err in form.non_field_errors %}
+        <div class="alert alert-dismissible alert-danger">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        {{ err }}
+        </div>
+    {% endfor %}
+{% endif %}
+
+{% if form.errors %}
+    {% for field in form %}
+        {% for error in field.errors %}
+            <div class="alert alert-dismissible alert-danger">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            {{ error }}
+            </div>
+        {% endfor %}
+    {% endfor %}
+{% endif %}
+
+
 <form  action="{% url "create_sport" %}" method="post">
     <div class="form-group">
     {% csrf_token %}
@@ -20,4 +47,5 @@
     </div>
 </form>
 
+</div>
 {% endblock %}
