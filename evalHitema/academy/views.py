@@ -1,9 +1,10 @@
 from django.http import HttpResponse, Http404
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
-def home(request):
-    """ Exemple de page non valide au niveau HTML pour que l'exemple soit concis """
-    return HttpResponse("""
-        <h1>Bienvenue sur mon blog !</h1>
-        <p>Les crêpes bretonnes ça tue des mouettes en plein vol !</p>
-    """)
+def root(request):
+    """ redirige http://127.0.0.1:8000 vers http://127.0.0.1:8000/academy/ """
+    return redirect(accueil)
+
+def accueil(request):
+    """ page d'accueil: http://127.0.0.1:8000/academy/ """
+    return render(request, 'academy/home.html')

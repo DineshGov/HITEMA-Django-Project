@@ -19,5 +19,6 @@ from academy import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('academy', include('academy.urls')),
+    path('academy/', include('academy.urls')),
+    path('', views.root),
 ]
