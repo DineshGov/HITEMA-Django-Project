@@ -11,7 +11,7 @@ def accueil(request):
     """ page d'accueil: http://127.0.0.1:8000/academy/ """
     return render(request, 'academy/home.html')
 
-def read_sports(request):
+def show_sports(request):
     sports = Sport.objects.all()
     return render(request, 'academy/sports.html', {'sports':sports})
 
@@ -31,3 +31,11 @@ def update_sport(request, id_sport):
         form.save()
         envoi = True
     return render(request, "academy/updateSport.html", locals())
+
+def delete_sport(request, id_sport):
+    sport = Sport.objects.get(id=id_sport)
+    if sport:
+        nom = sport.nomSport
+        sport.delete()
+        suppression = True
+    return render(request, 'academy/deleteSport.html', locals())

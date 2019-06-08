@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% block title %}Academy - MàJ sport {{ id_sport }}{% endblock %}
-{% block page_header %}Mise à jour du sport '{{ sport.nomSport }}'{% endblock %}
+{% block page_header %}Mise à jour du sport n°{{ sport.id }}{% endblock %}
 
 {% block position %}
 <ul class="breadcrumb">
@@ -18,13 +18,11 @@
 
 <div class="list-group col-lg-5 col-md-5 col-sm-5">
 
-{% if form.non_field_errors %}
-    {% for err in form.non_field_errors %}
-        <div class="alert alert-dismissible alert-danger">
-        <button type="button" class="close" data-dismiss="alert">&times;</button>
-        {{ err }}
-        </div>
-    {% endfor %}
+{% if envoi %}
+<div class="alert alert-dismissible alert-success">
+  <button type="button" class="close" data-dismiss="alert">&times;</button>
+  Le nom du sport <strong>{{ sport.nomSport }}</strong> a été mis à jour!
+</div>
 {% endif %}
 
 {% if form.errors %}
@@ -39,10 +37,13 @@
 {% endif %}
 
 <form  action="{% url 'update_sport' id_sport=sport.id %}" method="post">
-    <div class="form-group">
     {% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value="Submit" />
+    
+    {% load bootstrap %}
+    {{ form|bootstrap_horizontal }}
+    <hr>
+    <div class="col-lg-10 col-lg-offset-2">
+        <button type="submit" class="btn btn-success" style="margin-top: 20px;">Mettre à jour</button>
     </div>
 </form>
 </div>
