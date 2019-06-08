@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+{% block title %}Academy - Liste des equipes{% endblock %}
+{% block page_header %}Liste des equipes{% endblock %}
+
+{% block position %}
+<ul class="breadcrumb">
+  <li><a href="{% url 'accueil' %}">Home</a></li>
+  <li class="active">Équipes</li>
+</ul>
+{% endblock %}
+
+{% block content %}
+
+<style type="text/css">
+    h5{
+        position: relative;
+    }
+    h5>span{
+        position: absolute;
+        right: 10px;
+    }
+    span>a{
+        color: inherit;
+    }
+    .glyphicon-pencil{
+      color: #cd9b1d;
+    }
+    .glyphicon-trash{
+      color: #8b0000;
+    }
+</style>
+
+
+<div class="list-group col-lg-5 col-md-5 col-sm-5">
+  <table class="table table-striped table-hover ">
+  <thead>
+    <tr>
+      <th style="width: 40%">Nom de l'équipe</th>
+      <th style="width: 40%">Sport pratiqué</th>
+      <th style="width: 10%; text-align:center;">Modification</th>
+      <th style="width: 10%; text-align:center;">Suppression</th>
+    </tr>
+  </thead>
+    <tbody>
+      {% for equipe in equipes %}
+      <tr>
+        <td><a href="#">{{ equipe.nomEquipe }}</a></td>
+        <td>
+            {% if equipe.sport %}
+                <a href="#">{{ equipe.sport }}</a>
+            {% else %}
+                Aucun sport pratiqué
+            {% endif %}
+        </td>
+        <td style="text-align:center;"><a href="{% url 'update_equipe' id_equipe=equipe.id %}" ><i class="glyphicon glyphicon-pencil"></i></a></td>
+        <td style="text-align:center;"><a href="#}" ><i class="glyphicon glyphicon-trash"></i></a></td>
+      </tr>
+      {% empty %}
+      <tr>
+        <td>Aucune équipe</td>
+        <td></td>
+        <td></td>
+      </tr>
+      {% endfor %}
+  </tbody>
+</table>
+
+<div class="list-group col-lg-5 col-md-5 col-sm-5">
+<ul class="nav nav-pills nav-stacked">
+  <li class="active"><a href="{% url 'create_equipe' %}">Créer une équipe</a></li>
+</ul>
+</div>
+
+{% endblock %}

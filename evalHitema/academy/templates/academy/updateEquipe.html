@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% block title %}Academy - MàJ équipe {{ id_equipe }}{% endblock %}
+{% block page_header %}Mise à jour de l'équipe n°{{ equipe.id }}{% endblock %}
+
+{% block position %}
+<ul class="breadcrumb">
+  <li><a href="{% url 'accueil' %}">Home</a></li>
+  <li><a href="{% url 'equipes' %}">Sports</a></li>
+  <li class="active">MàJ équipe</li>
+</ul>
+{% endblock %}
+
+{% block content %}
+
+<style type="text/css">
+    ul.errorlist {display:none;}
+</style>
+
+<div class="list-group col-lg-5 col-md-5 col-sm-5">
+
+{% if envoi %}
+<div class="alert alert-dismissible alert-success">
+  <button type="button" class="close" data-dismiss="alert">&times;</button>
+  Le nom de l'équipe <strong>{{ equipe.nomSport }}</strong> a été mise à jour!
+</div>
+{% endif %}
+
+{% if form.errors %}
+    {% for field in form %}
+        {% for error in field.errors %}
+            <div class="alert alert-dismissible alert-danger">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            {{ error }}
+            </div>
+        {% endfor %}
+    {% endfor %}
+{% endif %}
+
+<form  action="{% url 'update_equipe' id_equipe=equipe.id %}" method="post">
+    {% csrf_token %}
+    
+    {% load bootstrap %}
+    {{ form|bootstrap_horizontal }}
+    <hr>
+    <div class="col-lg-10 col-lg-offset-2">
+        <button type="submit" class="btn btn-success" style="margin-top: 20px;">Mettre à jour</button>
+    </div>
+</form>
+</div>
+
+{% endblock %}

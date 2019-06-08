@@ -1,24 +1,26 @@
 {% extends "base.html" %}
-{% block title %}Academy - Création sport{% endblock %}
-{% block page_header %}Formulaire de création de sport{% endblock %}
+{% block title %}Academy - Création équipe{% endblock %}
+{% block page_header %}Formulaire de création d'équipe'{% endblock %}
 
 {% block position %}
 <ul class="breadcrumb">
   <li><a href="{% url 'accueil' %}">Home</a></li>
   <li><a href="{% url 'sports' %}">Sports</a></li>
-  <li class="active">Création sport</li>
+  <li class="active">Création équipe</li>
 </ul>
 {% endblock %}
 
 {% block content %}
 
 <style type="text/css">
-    ul.errorlist {display:none;}
+    ul.errorlist {
+      display: none;
+    }
 </style>
 
 <div class="list-group col-lg-5 col-md-5 col-sm-5">
 
-<form  action="{% url 'create_sport' %}" method="post">
+<form  action="{% url 'create_equipe' %}" method="post">
     {% csrf_token %}
     
     {% load bootstrap %}
