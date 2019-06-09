@@ -17,10 +17,6 @@ class Equipe(models.Model):
     nomEquipe = models.CharField(
         max_length = 100,
         unique = True,
-        error_messages = {
-            'unique':"Une équipe du même nom existe déjà!",
-            'max_length':"Veuillez choisir un nom plus court."
-        }
         )
     sport = models.ForeignKey(
         'Sport',

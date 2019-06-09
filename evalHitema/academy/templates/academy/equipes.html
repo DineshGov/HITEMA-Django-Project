@@ -47,13 +47,13 @@
         <td><a href="#">{{ equipe.nomEquipe }}</a></td>
         <td>
             {% if equipe.sport %}
-                <a href="#">{{ equipe.sport }}</a>
+                <a href="{% url 'read_sport' id_sport=equipe.sport.id %}">{{ equipe.sport.nomSport }}</a>
             {% else %}
                 Aucun sport pratiqué
             {% endif %}
         </td>
         <td style="text-align:center;"><a href="{% url 'update_equipe' id_equipe=equipe.id %}" ><i class="glyphicon glyphicon-pencil"></i></a></td>
-        <td style="text-align:center;"><a href="#}" ><i class="glyphicon glyphicon-trash"></i></a></td>
+        <td style="text-align:center;"><a href="{% url 'delete_equipe' id_equipe=equipe.id %}" ><i class="glyphicon glyphicon-trash"></i></a></td>
       </tr>
       {% empty %}
       <tr>

@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% block title %}Academy - détails du sport {{ sport.nomSport }}{% endblock %}
+{% block page_header %}Équipes pratiquant le sport '{{ sport.nomSport }}' {% endblock %}
+
+{% block position %}
+<ul class="breadcrumb">
+  <li><a href="{% url 'accueil' %}">Home</a></li>
+  <li><a href="{% url 'sports' %}">Sports</a></li>
+  <li class="active">{{ sport.nomSport }}</li>
+</ul>
+{% endblock %}
+
+{% block content %}
+
+<style type="text/css">
+
+</style>
+
+
+<div class="list-group col-lg-5 col-md-5 col-sm-5">
+  <div class="list-group">
+  <p class="list-group-item active">
+    Equipes
+  </p>
+    {% for equipe in equipes %}
+        <a href="#" class="list-group-item">{{ equipe.nomEquipe }}
+        </a>
+    {% empty %}
+        <p class="list-group-item">Aucune équipe ne pratique ce sport
+        </p>
+    {% endfor %}
+</div>
+
+<div class="col-lg-10 col-md-10 col-sm-10">
+    <div class="list-group col-lg-5 col-md-5 col-sm-5">
+    <ul class="pager">
+      <li><a href="{% url 'sports' %}">Retour à la liste des sports</a></li>
+    </ul>
+    </div>
+    <div class="list-group col-lg-5 col-md-5 col-sm-5">
+    <ul class="pager">
+      <li><a href="{% url 'equipes' %}">Retour à la liste des équipe</a></li>
+    </ul>
+    </div>
+</div>
+
+{% endblock %}

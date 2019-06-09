@@ -24,6 +24,11 @@ def create_sport(request):
         return redirect('sports')
     return render(request, 'academy/createSport.html', locals())
 
+def read_sport(request, id_sport):
+    sport = get_object_or_404(Sport, id=id_sport)
+    equipes = Equipe.objects.filter(sport = Sport.objects.get(id=id_sport))
+    return render(request, 'academy/readSport.html', locals())
+
 def update_sport(request, id_sport):
     sport = get_object_or_404(Sport, id=id_sport)
     form = SportForm(request.POST or None, instance=sport)
@@ -33,7 +38,7 @@ def update_sport(request, id_sport):
     return render(request, "academy/updateSport.html", locals())
 
 def delete_sport(request, id_sport):
-    sport = Sport.objects.get(id=id_sport)
+    sport = get_object_or_404(Sport, id=id_sport)
     if sport:
         nom = sport.nomSport
         sport.delete()
@@ -46,7 +51,6 @@ def show_equipes(request):
 
 def create_equipe(request):
     form = EquipeForm(request.POST or None)
-
     if form.is_valid(): 
         nomEquipe = form.cleaned_data['nomEquipe']
         form.save()
@@ -60,3 +64,11 @@ def update_equipe(request, id_equipe):
         form.save()
         envoi = True
     return render(request, "academy/updateEquipe.html", locals())
+
+def delete_equipe(request, id_equipe):
+    equipe = get_object_or_404(Equipe, id=id_equipe)
+    if equipe:
+        nom = equipe.nomEquipe
+        equipe.delete()
+        suppression = True
+    return render(request, 'academy/deleteEquipe.html', locals())
