@@ -23,11 +23,11 @@ permet de lister toutes les entités du modèle.
 http://127.0.0.1:8000/academy/create/<NOM_MODELE>/
 permet de créer une entité du modèle.
 
-http://127.0.0.1:8000/academy/read/<NOM_MODELE>/<INT>/
+http://127.0.0.1:8000/academy/read/<NOM_MODELE>/<ID>/
 permet d'afficher les détails d'une entité.
 
-http://127.0.0.1:8000/academy/update/<NOM_MODELE>/<INT>/
+http://127.0.0.1:8000/academy/update/<NOM_MODELE>/<ID>/
 permet de mettre à jour une entité.
 
-http://127.0.0.1:8000/academy/delete/<NOM_MODELE>/<INT>/
+http://127.0.0.1:8000/academy/delete/<NOM_MODELE>/<ID>/
 permet de supprimer une entité.
