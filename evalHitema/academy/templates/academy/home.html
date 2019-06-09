@@ -24,7 +24,7 @@ col-sm-offset-1 col-sm-2">
             <h3 class="panel-title">
                 Sport
                 <span>
-                    <a href="{% url "create_sport" %}"><i class="glyphicon glyphicon-plus"></i></a>
+                    <a href="{% url 'create_sport' %}"><i class="glyphicon glyphicon-plus"></i></a>
                 </span>
             </h3>
         </div>
@@ -41,7 +41,7 @@ col-sm-offset-1 col-sm-2">
             <h3 class="panel-title">
                 Équipe
                 <span>
-                    <a href=""><i class="glyphicon glyphicon-plus"></i></a>
+                    <a href="{% url 'create_equipe' %}"><i class="glyphicon glyphicon-plus"></i></a>
                 </span>
             </h3>
         </div>
@@ -58,12 +58,12 @@ col-sm-offset-1 col-sm-2">
             <h3 class="panel-title">
                 Joueur
                 <span>
-                    <a href=""><i class="glyphicon glyphicon-plus"></i></a>
+                    <a href="{% url 'create_joueur' %}"><i class="glyphicon glyphicon-plus"></i></a>
                 </span>
             </h3>
         </div>
         <div class="panel-body">
-            <a href="#" class="btn btn-warning btn-sm">Consulter la liste</a>
+            <a href="{% url 'joueurs' %}" class="btn btn-warning btn-sm">Consulter la liste</a>
         </div>
     </div>
 </div>

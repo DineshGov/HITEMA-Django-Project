@@ -20,6 +20,21 @@ class SportForm(forms.ModelForm):
         return cleaned_data
 
 class EquipeForm(forms.ModelForm):
+    joueurs = forms.ModelMultipleChoiceField(
+            widget=forms.CheckboxSelectMultiple,
+            queryset=Joueur.objects.all().order_by('nomJoueur'),
+            required=False,
+        )
     class Meta:
         model = Equipe
+        fields = '__all__'
+
+class JoueurForm(forms.ModelForm):
+    equipes = forms.ModelMultipleChoiceField(
+            widget=forms.CheckboxSelectMultiple,
+            queryset=Equipe.objects.all().order_by('nomEquipe'),
+            required=False,
+        )
+    class Meta:
+        model = Joueur
         fields = '__all__'

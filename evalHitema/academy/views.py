@@ -11,6 +11,9 @@ def accueil(request):
     """ page d'accueil: http://127.0.0.1:8000/academy/ """
     return render(request, 'academy/home.html')
 
+
+
+
 def show_sports(request):
     sports = Sport.objects.all()
     return render(request, 'academy/sports.html', {'sports':sports})
@@ -45,6 +48,9 @@ def delete_sport(request, id_sport):
         suppression = True
     return render(request, 'academy/deleteSport.html', locals())
 
+
+
+
 def show_equipes(request):
     equipes = Equipe.objects.all()
     return render(request, 'academy/equipes.html', {'equipes':equipes})
@@ -56,6 +62,9 @@ def create_equipe(request):
         form.save()
         return redirect('equipes')
     return render(request, 'academy/createEquipe.html', locals())
+
+"""def read_equipe(request, id_equipe):
+    return render(request, 'academy/readEquipe.html', locals())"""
 
 def update_equipe(request, id_equipe):
     equipe = get_object_or_404(Equipe, id=id_equipe)
@@ -72,3 +81,40 @@ def delete_equipe(request, id_equipe):
         equipe.delete()
         suppression = True
     return render(request, 'academy/deleteEquipe.html', locals())
+
+
+
+
+def show_joueurs(request):
+    joueurs = Joueur.objects.all()
+    equipes = []
+    for joueur in joueurs:
+        equipesJoueur = joueur.equipes.all()
+        for equipe in equipesJoueur:
+            equipes.append({joueur.nomJoueur: equipe})
+    return render(request, 'academy/joueurs.html', locals())
+
+def create_joueur(request):
+    form = JoueurForm(request.POST or None)
+    if form.is_valid(): 
+        nomJoueur = form.cleaned_data['nomJoueur']
+        form.save()
+        return redirect('joueurs')
+    return render(request, 'academy/createJoueur.html', locals())
+
+def update_joueur(request, id_joueur):
+    joueur = get_object_or_404(Joueur, id=id_joueur)
+    form = JoueurForm(request.POST or None, instance=joueur)
+    if form.is_valid():
+        form.save()
+        envoi = True
+    return render(request, "academy/updateJoueur.html", locals())
+
+def delete_joueur(request, id_joueur):
+    joueur = get_object_or_404(Joueur, id=id_joueur)
+    if joueur:
+        nom = joueur.nomJoueur
+        joueur.delete()
+        suppression = True
+    return render(request, 'academy/deleteJoueur.html', locals())
+

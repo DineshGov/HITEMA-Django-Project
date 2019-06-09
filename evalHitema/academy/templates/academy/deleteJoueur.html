@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block title %}Academy - Suppression joueur{% endblock %}
+{% block page_header %}Suppression d'un joueur{% endblock %}
+
+{% block position %}
+<ul class="breadcrumb">
+  <li><a href="{% url 'accueil' %}">Home</a></li>
+  <li><a href="{% url 'joueurs' %}">Joueurs</a></li>
+  <li class="active">Suppression joueur</li>
+</ul>
+{% endblock %}
+
+{% block content %}
+
+<div class="list-group col-lg-5 col-md-5 col-sm-5">
+
+{% if suppression %}
+<div class="alert alert-dismissible alert-success">
+  <button type="button" class="close" data-dismiss="alert">&times;</button>
+  Le joueur <strong>{{ joueur.nomJoueur }}</strong> a été supprimé!
+</div>
+{% endif %}
+
+<ul class="pager">
+  <li><a href="{% url 'joueurs' %}">Retour</a></li>
+</ul>
+
+{% endblock %}

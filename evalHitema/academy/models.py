@@ -1,4 +1,11 @@
 from django.db import models
+from django.contrib import admin
+from django.forms import CheckboxSelectMultiple
+
+class MyModelAdmin(admin.ModelAdmin):
+    formfield_overrides = {
+        models.ManyToManyField: {'widget': CheckboxSelectMultiple},
+    }
 
 class Sport(models.Model):
     nomSport = models.CharField(
@@ -24,8 +31,29 @@ class Equipe(models.Model):
         blank = True,
         null = True,
         )
+    joueurs = models.ManyToManyField(
+        'Joueur',
+        blank=True,
+        null = True,
+        )
+
     class Meta:
         verbose_name = "equipe"
     
     def __str__(self):
         return self.nomEquipe
+
+class Joueur(models.Model):
+    nomJoueur = models.CharField(
+        max_length = 100,
+        unique = True,
+        )
+    equipes = models.ManyToManyField(
+        'Equipe',
+        through=Equipe.joueurs.through,
+        blank=True)
+    class Meta:
+        verbose_name = "joueur"
+    
+    def __str__(self):
+        return self.nomJoueur

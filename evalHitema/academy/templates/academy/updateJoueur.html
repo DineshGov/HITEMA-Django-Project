@@ -1,11 +1,11 @@
 {% extends "base.html" %}
-{% block title %}Academy - MàJ équipe {{ id_equipe }}{% endblock %}
-{% block page_header %}Mise à jour de l'équipe n°{{ equipe.id }}{% endblock %}
+{% block title %}Academy - MàJ joueur {{ id_joueur }}{% endblock %}
+{% block page_header %}Mise à jour du joueur n°{{ joueur.id }}{% endblock %}
 
 {% block position %}
 <ul class="breadcrumb">
   <li><a href="{% url 'accueil' %}">Home</a></li>
-  <li><a href="{% url 'equipes' %}">Equipes</a></li>
+  <li><a href="{% url 'joueurs' %}">Joueurs</a></li>
   <li class="active">MàJ équipe</li>
 </ul>
 {% endblock %}
@@ -21,7 +21,7 @@
 {% if envoi %}
 <div class="alert alert-dismissible alert-success">
   <button type="button" class="close" data-dismiss="alert">&times;</button>
-  Le nom de l'équipe <strong>{{ equipe.nomSport }}</strong> a été mise à jour!
+  Le nom du joueur <strong>{{ joueur.nomJoueur }}</strong> a été mis à jour!
 </div>
 {% endif %}
 
@@ -36,7 +36,7 @@
     {% endfor %}
 {% endif %}
 
-<form  action="{% url 'update_equipe' id_equipe=equipe.id %}" method="post">
+<form  action="{% url 'update_joueur' id_joueur=joueur.id %}" method="post">
     {% csrf_token %}
     
     {% load bootstrap %}
