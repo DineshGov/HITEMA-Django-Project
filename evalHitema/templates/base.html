@@ -1,9 +1,13 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-   <title>{% block title %}Academy{% endblock %}</title>
-   <!-- Latest compiled and minified CSS -->
-   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <title>{% block title %}Academy{% endblock %}</title>
+    
+    {% load static %}
+    <link rel="icon" href="{% static 'img/cacahuetes.ico' %}" >
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
 </head>
 <body>
 <nav class="navbar navbar-inverse" style="border-radius: 0px;">

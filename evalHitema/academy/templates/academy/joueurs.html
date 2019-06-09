@@ -43,14 +43,14 @@
     <tbody>
       {% for joueur in joueurs %}
       <tr>
-        <td><a href="#">{{ joueur.nomJoueur }}</a></td>
+        <td><a href="{% url 'read_joueur' id_joueur=joueur.id %}">{{ joueur.nomJoueur }}</a></td>
         <td>
           <ul>
             {% for couple in equipes %}
               {% for key, val in couple.items%}
                 {% if key == joueur.nomJoueur %}
                   <li>
-                    <a href="#">{{ val.nomEquipe }}</a>
+                    <a href="{% url 'read_equipe' id_equipe=equipe.id %}">{{ val.nomEquipe }}</a>
                   </li>
                 {% endif %}
               {% endfor %}
@@ -64,7 +64,7 @@
       </tr>
       {% empty %}
       <tr>
-        <td>Aucune joueur.</td>
+        <td>Aucun joueur.</td>
         <td></td>
         <td></td>
         <td></td>

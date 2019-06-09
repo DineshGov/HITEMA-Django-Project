@@ -29,7 +29,9 @@ col-sm-offset-1 col-sm-2">
             </h3>
         </div>
         <div class="panel-body">
-            <a href="{% url 'sports' %}" class="btn btn-success btn-sm">Consulter la liste</a>
+            {% load static %}
+            <img src="{% static 'img/undraw_basketball_agx4.png' %}" class="img-responsive" alt="img_sport"> 
+            <a href="{% url 'sports' %}" class="btn btn-success btn-block" >Consulter la liste</a>
         </div>
     </div>
 </div>
@@ -46,7 +48,8 @@ col-sm-offset-1 col-sm-2">
             </h3>
         </div>
         <div class="panel-body">
-            <a href="{% url 'equipes' %}" class="btn btn-info btn-sm">Consulter la liste</a>
+            <img src="{% static 'img/undraw_team_ih79.png' %}" class="img-responsive" alt="img_equipe"> 
+            <a href="{% url 'equipes' %}" class="btn btn-info btn-block">Consulter la liste</a>
         </div>
     </div>
 </div>
@@ -63,7 +66,8 @@ col-sm-offset-1 col-sm-2">
             </h3>
         </div>
         <div class="panel-body">
-            <a href="{% url 'joueurs' %}" class="btn btn-warning btn-sm">Consulter la liste</a>
+            <img src="{% static 'img/undraw_profile_pic_ic5t.png' %}" class="img-responsive" alt="img_equipe">
+            <a href="{% url 'joueurs' %}" class="btn btn-warning btn-block">Consulter la liste</a>
         </div>
     </div>
 </div>

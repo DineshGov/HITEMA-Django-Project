@@ -1,12 +1,12 @@
 {% extends "base.html" %}
 {% block title %}Academy - Création joueur{% endblock %}
-{% block page_header %}Formulaire de création d'un joueur''{% endblock %}
+{% block page_header %}Formulaire de création d'un joueur{% endblock %}
 
 {% block position %}
 <ul class="breadcrumb">
   <li><a href="{% url 'accueil' %}">Home</a></li>
   <li><a href="{% url 'joueurs' %}">Joueurs</a></li>
-  <li class="active">Création équipe</li>
+  <li class="active">Création joueur</li>
 </ul>
 {% endblock %}
 
@@ -18,7 +18,7 @@
     }
     ul{
      list-style:none;
-  }
+    }
 </style>
 
 <div class="list-group col-lg-5 col-md-5 col-sm-5">

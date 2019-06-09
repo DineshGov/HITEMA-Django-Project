@@ -63,8 +63,12 @@ def create_equipe(request):
         return redirect('equipes')
     return render(request, 'academy/createEquipe.html', locals())
 
-"""def read_equipe(request, id_equipe):
-    return render(request, 'academy/readEquipe.html', locals())"""
+def read_equipe(request, id_equipe):
+    equipe = get_object_or_404(Equipe, id=id_equipe)
+    joueurs = []
+    for joueur in equipe.joueurs.all():
+        joueurs.append({joueur: joueur.nomJoueur})
+    return render(request, 'academy/readEquipe.html', locals())
 
 def update_equipe(request, id_equipe):
     equipe = get_object_or_404(Equipe, id=id_equipe)
@@ -89,10 +93,17 @@ def show_joueurs(request):
     joueurs = Joueur.objects.all()
     equipes = []
     for joueur in joueurs:
-        equipesJoueur = joueur.equipes.all()
-        for equipe in equipesJoueur:
+        for equipe in joueur.equipes.all():
             equipes.append({joueur.nomJoueur: equipe})
     return render(request, 'academy/joueurs.html', locals())
+
+def read_joueur(request, id_joueur):
+    joueur = get_object_or_404(Joueur, id=id_joueur)
+    equipes = []
+    equipesJoueur = joueur.equipes.all()
+    for equipe in equipesJoueur:
+        equipes.append({equipe: equipe.sport})
+    return render(request, 'academy/readJoueur.html', locals())
 
 def create_joueur(request):
     form = JoueurForm(request.POST or None)

@@ -44,7 +44,7 @@
     <tbody>
       {% for equipe in equipes %}
       <tr>
-        <td><a href="#">{{ equipe.nomEquipe }}</a></td>
+        <td><a href="{% url 'read_equipe' id_equipe=equipe.id %}">{{ equipe.nomEquipe }}</a></td>
         <td>
             {% if equipe.sport %}
                 <a href="{% url 'read_sport' id_sport=equipe.sport.id %}">{{ equipe.sport.nomSport }}</a>

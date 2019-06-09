@@ -34,7 +34,6 @@ class Equipe(models.Model):
     joueurs = models.ManyToManyField(
         'Joueur',
         blank=True,
-        null = True,
         )
 
     class Meta:

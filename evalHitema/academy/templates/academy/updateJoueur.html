@@ -6,7 +6,7 @@
 <ul class="breadcrumb">
   <li><a href="{% url 'accueil' %}">Home</a></li>
   <li><a href="{% url 'joueurs' %}">Joueurs</a></li>
-  <li class="active">MàJ équipe</li>
+  <li class="active">MàJ joueur</li>
 </ul>
 {% endblock %}
 
@@ -14,6 +14,9 @@
 
 <style type="text/css">
     ul.errorlist {display:none;}
+    ul{
+     list-style:none;
+    }
 </style>
 
 <div class="list-group col-lg-5 col-md-5 col-sm-5">
@@ -21,7 +24,7 @@
 {% if envoi %}
 <div class="alert alert-dismissible alert-success">
   <button type="button" class="close" data-dismiss="alert">&times;</button>
-  Le nom du joueur <strong>{{ joueur.nomJoueur }}</strong> a été mis à jour!
+  Le joueur <strong>{{ joueur.nomJoueur }}</strong> a été mis à jour!
 </div>
 {% endif %}
 
